@@ -94,7 +94,11 @@ class Home extends React.Component {
                       alt={place.name}
                     />
                   ) : (
-                    ""
+                    <img
+                      className="card-img-top"
+                      src='http://louispasteur.edu.mx/images/2018/02/02/primaria.jpg'
+                      alt={place.name}
+                    />
                   )}
 
                   <div className="card-body">
