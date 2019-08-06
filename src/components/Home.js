@@ -69,14 +69,15 @@ class Home extends React.Component {
     window.filteredPlaces = this.state.filteredPlaces;
     return (
       <div>
-          <MapComponent
+        <Filters filters={this.state.filters} setFilter={this.setFilter} />
+
+        <MapComponent
             // mainLocation={this.props.mainLocation}
             filteredPlaces={this.state.filteredPlaces}
             loadedPlaces={this.state.loadedPlaces}
             setLoadedPlaces={this.setLoadedPlaces}
             setFilteredPlaces={this.setFilteredPlaces}
-          />
-        <Filters filters={this.state.filters} setFilter={this.setFilter} />
+        />
 
         <div className="container" style={{ marginTop: "20px" }}>
           {this.getGroupedPlaces().map((places, i) => (
@@ -87,23 +88,26 @@ class Home extends React.Component {
                   key={`place${i2}`}
                   style={{ margin: "5px", paddingTop: "5px" }}
                 >
+                    <div className="card-body">
+                    <h6 className="card-title" style={{'fontSize': '20px'}}>{place.name}</h6>
+                    <p>{place.vicinity}</p>
+                  </div>
                   {place.photos && place.photos.length > 0 ? (
                     <img
                       className="card-img-top"
                       src={place.photos[0].getUrl()}
                       alt={place.name}
+                      style={{'width': '400px'}}
                     />
                   ) : (
                     <img
                       className="card-img-top"
                       src='http://louispasteur.edu.mx/images/2018/02/02/primaria.jpg'
                       alt={place.name}
+                      style={{'width': '400px'}}
+
                     />
                   )}
-
-                  <div className="card-body">
-                    <h6 className="card-title">{place.name}</h6>
-                  </div>
                 </div>
               ))}
             </div>

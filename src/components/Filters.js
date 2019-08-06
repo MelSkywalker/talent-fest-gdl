@@ -4,7 +4,7 @@ import React from "react";
 class Filters extends React.Component {
   render() {
     return (
-      <div className="container" style={{ marginTop: "10px", backgroundColor: "#E19B5F",textAlign:"center", fontSize:"20px", fontFamily:'Palatino Linotype', color:"red" }} >
+      <div className="container" style={{ marginTop: "10px", backgroundColor: "#00758f",textAlign:"center", fontSize:"20px", fontFamily:'Palatino Linotype', color:"white" }} >
         <div className="row">
           <div className="col-3">
             <label htmlFor="ratingFilter">Calificacion:</label>{" "}
