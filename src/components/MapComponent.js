@@ -70,7 +70,8 @@ class MapComponent extends React.Component {
     const request = {
       location: this.state.currentLatLng,
       radius: 1000,
-      type: ["school"]
+      type: ["school"],
+      keyword: 'primaria'
     };
     service.nearbySearch(request, (results, status, pagination) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -85,10 +86,12 @@ class MapComponent extends React.Component {
     const mapStyle = {
       width: "100%",
       height: "50vh",
+      position: "relative"
     };
     const divStyle = {
       width: "100%",
       height: "50vh",
+      position: "relative"
     };
     return (
       <div>

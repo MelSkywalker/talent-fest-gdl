@@ -12,9 +12,9 @@ class Home extends React.Component {
       filteredPlaces: [],
       filters: {
         // -1 es el estado inicial
-        priceFilter: -1,
+        lvlFilter: -1,
         ratingFilter: -1
-      }
+      },
     };
   }
 
@@ -26,10 +26,10 @@ class Home extends React.Component {
     const { value, name } = e.target;
 
     let newFilters = { [name]: Number(value) };
-    if (name === "priceFilter") {
+    if (name === "lvlFilter") {
       newFilters.ratingFilter = this.state.filters.ratingFilter;
     } else {
-      newFilters.priceFilter = this.state.filters.priceFilter;
+      newFilters.lvlFilter = this.state.filters.lvlFilter;
     }
     this.setState({ filters: newFilters }, this.setFilteredPlaces);
   };
@@ -37,15 +37,16 @@ class Home extends React.Component {
   setFilteredPlaces = () => {
     // traer solo los que cumplen las condiciones
     const filteredPlaces = this.state.loadedPlaces.filter(e => {
-      const priceFilter =
-        this.state.filters.priceFilter > -1
-          ? e.price_level <= this.state.filters.priceFilter
+      const lvlFilter =
+        this.state.filters.lvlFilter > -1
+          ? e.lvl_level <= this.state.filters.lvlFilter
           : true;
       const ratingFilter =
         this.state.filters.ratingFilter > -1
           ? e.rating >= this.state.filters.ratingFilter
           : true;
-      return priceFilter && ratingFilter;
+          console.log('rating filter')
+      return lvlFilter && ratingFilter;
     });
     this.setState({ filteredPlaces });
   };
